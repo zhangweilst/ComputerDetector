@@ -1,19 +1,14 @@
 #files
 *.ncb
-*.sln
 *.suo
 *.cd
 *.aps
-*.vcproj
 *.user
-*.lib
-*.sys
-*.vxd
-*.dll
-*.reg
+*.exe
+*.ilk
+*.pdb
+*.csv
 
 #directories
-Debug/
-Release/
 ComputerDetector/Debug
 ComputerDetector/Release
