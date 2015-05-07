@@ -600,27 +600,7 @@
 				RelativePath=".\res\ComputerDetector.rc2"
 				>
 			</File>
-			<File
-				RelativePath=".\res\ComputerDetectorDoc.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\res\icon1.ico"
-				>
-			</File>
-			<File
-				RelativePath=".\res\toolbar1.bmp"
-				>
-			</File>
-			<File
-				RelativePath=".\UserImages.bmp"
-				>
-			</File>
 		</Filter>
-		<File
-			RelativePath=".\ClassDiagram1.cd"
-			>
-		</File>
 		<File
 			RelativePath=".\ComputerDetector.reg"
 			>
