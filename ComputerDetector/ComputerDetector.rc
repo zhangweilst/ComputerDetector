@@ -74,7 +74,6 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDR_MAINFRAME           ICON                    "res\\ComputerDetector.ico"
-IDR_ComputerDetectorTYPE ICON                    "res\\ComputerDetectorDoc.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -260,7 +259,6 @@ END
 // Bitmap
 //
 
-IDR_TOOLBAR_COMMON      BITMAP                  "res\\toolbar1.bmp"
 
 /////////////////////////////////////////////////////////////////////////////
 //
