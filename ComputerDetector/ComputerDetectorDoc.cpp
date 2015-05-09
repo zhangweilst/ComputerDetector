@@ -71,7 +71,7 @@ CComputerDetectorDoc::CComputerDetectorDoc()
 	CString strNvdia(_T("NVIDIA"));
 	CString strATI(_T("Advanced Micro Devices, Inc."));
 	str.Empty();
-	str = m_WMI.GetWMIProperty(bstr_t("Win32_VideoController"), L"AdapterCompatibility").GetAt(0).bstrVal;
+	str = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_VideoController"), L"AdapterCompatibility").GetAt(0).bstrVal;
 
 	if (str == strNvdia)
 	{
@@ -95,7 +95,7 @@ CComputerDetectorDoc::CComputerDetectorDoc()
 	m_PhysicalMemory = new CPhysicalMemory;
 
 	// m_strHostName
-	m_strHostName = m_WMI.GetWMIProperty(bstr_t("Win32_ComputerSystem"), L"Name").GetAt(0).bstrVal;
+	m_strHostName = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_ComputerSystem"), L"Name").GetAt(0).bstrVal;
 
 	// m_BaseBoard;
 	m_BaseBoard = new CBaseBoard;

@@ -61,8 +61,14 @@ int CWMI::WMIInitialize()
 		return 1;
 	}
 
+	return 0;
+}
+
+int CWMI::WMIConnectServer(BSTR strResource)
+{
+	HRESULT hres;
 	hres = m_pLoc->ConnectServer(        
-        _bstr_t(L"ROOT\\CIMV2"),	// WMI namespace
+        strResource,	// WMI namespace
         NULL,
         NULL,
         0,
@@ -103,8 +109,9 @@ int CWMI::WMIInitialize()
 	return 0;
 }
 
-CArray<VARIANT, VARIANT>& CWMI::GetWMIProperty(BSTR className, LPCWSTR prop)
+CArray<VARIANT, VARIANT>& CWMI::GetWMIProperty(BSTR strResource, BSTR className, LPCWSTR prop)
 {
+	WMIConnectServer(strResource);
 	m_PropArray.RemoveAll();
 
 	CString strClsName;

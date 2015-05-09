@@ -17,7 +17,7 @@ CGraphicsAdapter::CGraphicsAdapter(void)
 	m_FanSpeed = 0;
 	
 	// m_strName
-	m_strName = m_WMI.GetWMIProperty(bstr_t("Win32_VideoController"), L"Name").GetAt(0).bstrVal;
+	m_strName = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_VideoController"), L"Name").GetAt(0).bstrVal;
 }
 
 CGraphicsAdapter::~CGraphicsAdapter(void)

@@ -16,11 +16,11 @@ CCPU::CCPU(void)
 		m_bHTT = false;
 
 	// Number of processors, cores and threads
-	m_NumOfProcessors = m_WMI.GetWMIProperty(bstr_t("Win32_Processor"), L"CpuStatus").GetCount();
-	m_NumOfCores = m_WMI.GetWMIProperty(bstr_t("Win32_Processor"), L"NumberOfCores").GetAt(0).intVal;
+	m_NumOfProcessors = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_Processor"), L"CpuStatus").GetCount();
+	m_NumOfCores = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_Processor"), L"NumberOfCores").GetAt(0).intVal;
 
 	if (m_bHTT)
-		m_NumOfThreads = m_WMI.GetWMIProperty(bstr_t("Win32_Processor"), L"NumberOfLogicalProcessors").GetAt(0).intVal /
+		m_NumOfThreads = m_WMI.GetWMIProperty(bstr_t("ROOT\\CIMV2"), bstr_t("Win32_Processor"), L"NumberOfLogicalProcessors").GetAt(0).intVal /
 		m_NumOfCores;
 	else
 		m_NumOfThreads = 1;

@@ -30,8 +30,9 @@ protected:
 	CArray<VARIANT, VARIANT> m_PropArray;
 
 // ³ÉÔ±º¯Êý
-protected:
+private:
 	int WMIInitialize();
+	int WMIConnectServer(BSTR strResource);
 public:
-	CArray<VARIANT, VARIANT>& GetWMIProperty(BSTR className, LPCWSTR prop);
+	CArray<VARIANT, VARIANT>& GetWMIProperty(BSTR strResource, BSTR className, LPCWSTR prop);
 };
