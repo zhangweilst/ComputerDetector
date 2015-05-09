@@ -336,6 +336,20 @@ void CComputerDetectorListView::Refresh(LPCTSTR pszItem)
 		itemInfo.strValue = _T("");
 		itemInfo.strMaxValue = _T("");
 		AddItem(nCount++, itemInfo);
+
+		int sensorCount = GetDocument()->GetObjBaseBoard()->GetSensorCount();
+		for (int i = 0; i < sensorCount; i++)
+		{
+			if (sensorCount > 1)
+				str.Format(_T("主板温度%d："), i + 1);
+			else
+				str = _T("主板温度：");
+			itemInfo.strItem = str;
+			str.Format(_T("%.1lf °C"), GetDocument()->GetObjBaseBoard()->GetBaseBoardTemperture()[i]);
+			itemInfo.strValue = str;
+			itemInfo.strMaxValue = _T("");
+			AddItem(nCount++, itemInfo);
+		}
 	}
 
 	if (strItem == _T("显卡"))

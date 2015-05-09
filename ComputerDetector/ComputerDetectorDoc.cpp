@@ -165,6 +165,9 @@ UINT __cdecl ThreadProcUpdate(LPVOID pParam)
 		// GPU Related
 		pDoc->m_GraphicsAdapter->MakeAdapterActivity();
 
+		// Baseboard temperature
+		// pDoc->m_BaseBoard->GetBaseBoardTemperture();
+
 		Sleep(500);
 	}
 
