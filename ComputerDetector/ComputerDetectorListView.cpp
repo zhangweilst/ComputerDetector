@@ -418,15 +418,12 @@ void CComputerDetectorListView::Refresh(LPCTSTR pszItem)
 			AddItem(nCount++, itemInfo);
 		}
 
-		if (GetDocument()->GetObjGPU()->GetGPUPercentage())
-		{
 		itemInfo.strItem = _T("GPU 占有率");
 		str.Format(_T("%d %%"), GetDocument()->GetObjGPU()->GetGPUPercentage());
 		itemInfo.strValue = str;
 		str.Format(_T("%d %%"), GetDocument()->GetObjGPU()->GetMaxGPUPercentage());
 		itemInfo.strMaxValue = str;
 		AddItem(nCount++, itemInfo);
-		}
 	}
 
 	if (strItem == _T("物理内存"))
