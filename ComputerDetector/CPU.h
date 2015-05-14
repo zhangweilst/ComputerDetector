@@ -36,16 +36,24 @@ protected:
 	static DWORD* m_MaxCrtThreadFreq;
 	static DWORD* m_MaxCrtThreadPercentage;
 	static DWORD m_MaxCPUPercentage;
+
 	DWORD m_MaxRatio;			// Max frequency doubling (Non-Turbo for Intel)
 	DWORD m_MaxTurboRatio;	// Max turbo frequency doubling (Intel only)
 	DWORD m_MinRatio;				// Min frequency doubling
 	DWORD m_CPUToBusRatio;
+	static DWORD m_MaxCPUToBusRatio;
+
 	double m_BusFreq;
 	double m_CPUFreq;
 	double m_PackagePower;
 	double m_CoresPower;
 	double m_GraphicsPower;
 	double m_DRAMPower;
+	static double m_MaxCPUFreq;
+	static double m_MaxPackagePower;
+	static double m_MaxCoresPower;
+	static double m_MaxGraphicsPower;
+	static double m_MaxDRAMPower;
 
 	CString m_strMicorArchitecture;		// IA32 microarchitecture string
 	DWORD m_dwMicorArchitecture;		// IA32 microarchitecture enumeration
@@ -72,12 +80,19 @@ public:
 	DWORD GetMaxTurboRatio() { return m_MaxTurboRatio; }
 	DWORD GetMinRatio() { return m_MinRatio; }
 	DWORD GetCPUToBusRatio() { return m_CPUToBusRatio; }
+	DWORD GetMaxCPUToBusRatio() { return m_MaxCPUToBusRatio; }
+
 	double GetBusFreq() { return m_BusFreq; }
 	double GetCPUFreq() { return m_CPUFreq; }
 	double GetPackagePower() { return m_PackagePower; }
 	double GetCoresPower() { return m_CoresPower; }
 	double GetGraphicsPower() { return m_GraphicsPower; }
 	double GetDRAMPower() { return m_DRAMPower; }
+	double GetMaxCPUFreq() { return m_MaxCPUFreq; }
+	double GetMaxPackagePower() { return m_MaxPackagePower; }
+	double GetMaxCoresPower() { return m_MaxCoresPower; }
+	double GetMaxGraphicsPower() { return m_MaxGraphicsPower; }
+	double GetMaxDRAMPower() { return m_MaxDRAMPower; }
 
 	int GetNumOfProcessors() { return m_NumOfProcessors; }
 	int GetNumOfCores() { return m_NumOfCores; }

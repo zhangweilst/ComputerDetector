@@ -200,6 +200,11 @@ void CIntel::MakeBusAndCPUFreq()
 	Rdmsr(IA32_PERF_STATUS, &eax1, &edx1);
 	m_CPUToBusRatio = (eax1 >> 8) & 0xFF;
 	m_CPUFreq = m_CPUToBusRatio * m_BusFreq;
+
+	m_MaxCPUToBusRatio = m_MaxCPUToBusRatio < m_CPUToBusRatio
+		? m_CPUToBusRatio : m_MaxCPUToBusRatio;
+	m_MaxCPUFreq = m_MaxCPUFreq < m_CPUFreq
+		? m_CPUFreq : m_MaxCPUFreq;
 }
 
 void CIntel::MakePowerInfo()
@@ -227,6 +232,15 @@ void CIntel::MakePowerInfo()
 	m_DRAMPower = (eax4 - eax3) * m_RaplPowerUnit.m_EnergyUnit / 0.5;
 	m_CoresPower = (eax6 - eax5) * m_RaplPowerUnit.m_EnergyUnit / 0.5;
 	m_GraphicsPower = (eax8 - eax7) * m_RaplPowerUnit.m_EnergyUnit / 0.5;
+
+	m_MaxPackagePower = m_MaxPackagePower < m_PackagePower
+		? m_PackagePower : m_MaxPackagePower;
+	m_MaxDRAMPower = m_MaxDRAMPower < m_DRAMPower
+		? m_DRAMPower : m_MaxDRAMPower;
+	m_MaxCoresPower = m_MaxCoresPower < m_CoresPower
+		? m_CoresPower : m_MaxCoresPower;
+	m_MaxGraphicsPower = m_MaxGraphicsPower < m_GraphicsPower
+		? m_GraphicsPower : m_MaxGraphicsPower;
 }
 
 // private

@@ -230,13 +230,15 @@ void CComputerDetectorListView::Refresh(LPCTSTR pszItem)
 				GetDocument()->GetObjCPU()->GetMinRatio(),
 				GetDocument()->GetObjCPU()->GetMaxTurboRatio());
 			itemInfo.strValue = str;
-			itemInfo.strMaxValue = _T("");
+			str.Format("×%d", GetDocument()->GetObjCPU()->GetMaxCPUToBusRatio());
+			itemInfo.strMaxValue = str;
 			AddItem(nCount++, itemInfo);
 
 			itemInfo.strItem = _T("处理器");
 			str.Format("%.lf MHz", GetDocument()->GetObjCPU()->GetCPUFreq());
 			itemInfo.strValue = str;
-			itemInfo.strMaxValue = _T("");
+			str.Format("%.lf MHz", GetDocument()->GetObjCPU()->GetMaxCPUFreq());
+			itemInfo.strMaxValue = str;
 			AddItem(nCount++, itemInfo);
 
 			itemInfo.strItem = _T("占有率");
@@ -288,25 +290,29 @@ void CComputerDetectorListView::Refresh(LPCTSTR pszItem)
 				itemInfo.strItem = _T("CPU 封装");
 				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetPackagePower());
 				itemInfo.strValue = str;
-				itemInfo.strMaxValue = _T("");
+				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetMaxPackagePower());
+				itemInfo.strMaxValue = str;
 				AddItem(nCount++, itemInfo);
 
 				itemInfo.strItem = _T("CPU 核心");
 				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetCoresPower());
 				itemInfo.strValue = str;
-				itemInfo.strMaxValue = _T("");
+				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetMaxCoresPower());
+				itemInfo.strMaxValue = str;
 				AddItem(nCount++, itemInfo);
 
 				itemInfo.strItem = _T("CPU 图形核心");
 				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetGraphicsPower());
 				itemInfo.strValue = str;
-				itemInfo.strMaxValue = _T("");
+				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetMaxGraphicsPower());
+				itemInfo.strMaxValue = str;
 				AddItem(nCount++, itemInfo);
 
 				itemInfo.strItem = _T("CPU DRAM");
 				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetDRAMPower());
 				itemInfo.strValue = str;
-				itemInfo.strMaxValue = _T("");
+				str.Format(_T("%.2lf W"), GetDocument()->GetObjCPU()->GetMaxDRAMPower());
+				itemInfo.strMaxValue = str;
 				AddItem(nCount++, itemInfo);
 			}
 		}

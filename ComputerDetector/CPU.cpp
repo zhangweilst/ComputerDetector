@@ -6,6 +6,12 @@ DWORD* CCPU::m_MaxCrtCoreTemp;
 DWORD* CCPU::m_MaxCrtThreadFreq;
 DWORD* CCPU::m_MaxCrtThreadPercentage;
 DWORD CCPU::m_MaxCPUPercentage;
+DWORD CCPU::m_MaxCPUToBusRatio;
+double CCPU::m_MaxCPUFreq = 0.0;
+double CCPU::m_MaxPackagePower = 0.0;
+double CCPU::m_MaxCoresPower = 0.0;
+double CCPU::m_MaxGraphicsPower = 0.0;
+double CCPU::m_MaxDRAMPower = 0.0;
 
 CCPU::CCPU(void)
 {
@@ -89,7 +95,7 @@ DWORD* CCPU::GetThreadPercentage()
 	{
 		m_CurrentThreadPercentage[i] = static_cast<DWORD>((m_CurrentThreadFreq[i] / MaxFrequency) * 100);
 		if (m_CurrentThreadPercentage[i] > 100)
-			m_CurrentThreadPercentage[i] = 100;
+			m_CurrentThreadPercentage[i] = 0;
 	}
 
 	return m_CurrentThreadPercentage;
