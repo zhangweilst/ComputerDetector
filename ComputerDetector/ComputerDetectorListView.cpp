@@ -238,7 +238,7 @@ void CComputerDetectorListView::Refresh(LPCTSTR pszItem)
 			str.Format("%.lf MHz", GetDocument()->GetObjCPU()->GetCPUFreq());
 			itemInfo.strValue = str;
 			str.Format("%.lf MHz", GetDocument()->GetObjCPU()->GetMaxCPUFreq());
-			itemInfo.strMaxValue = str;
+			itemInfo.strMaxValue = _T("");
 			AddItem(nCount++, itemInfo);
 
 			itemInfo.strItem = _T("Õ¼ÓÐÂÊ");

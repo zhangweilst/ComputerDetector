@@ -31,17 +31,16 @@ END_MESSAGE_MAP()
 
 CComputerDetectorApp::CComputerDetectorApp()
 {
-
-	m_bHiColorIcons = TRUE;
-
-	// TODO: 在此处添加构造代码，
-	// 将所有重要的初始化放置在 InitInstance 中
-
 	// Ring0 initialization
 	if(InitializeOls() == FALSE)
 	{
 		AfxMessageBox(_T("Error InitializeOls()!!"));
 	}
+
+	m_bHiColorIcons = TRUE;
+
+	// TODO: 在此处添加构造代码，
+	// 将所有重要的初始化放置在 InitInstance 中
 }
 
 // 唯一的一个 CComputerDetectorApp 对象
@@ -53,8 +52,6 @@ CComputerDetectorApp theApp;
 
 BOOL CComputerDetectorApp::InitInstance()
 {
-	CWinAppEx::InitInstance();
-
 	// 初始化 OLE 库
 	if (!AfxOleInit())
 	{
@@ -116,6 +113,7 @@ BOOL CComputerDetectorApp::InitInstance()
 	//  在 SDI 应用程序中，这应在 ProcessShellCommand 之后发生
 	// 启用拖/放
 	m_pMainWnd->DragAcceptFiles();
+	CWinAppEx::InitInstance();
 	return TRUE;
 }
 

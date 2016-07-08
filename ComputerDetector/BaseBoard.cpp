@@ -22,18 +22,27 @@ CBaseBoard::CBaseBoard(void)
 	if (m_BaseBoardSensorCount == 0)
 		m_CurrentTemperature = NULL;
 	else
+	{
 		m_CurrentTemperature = new float[m_BaseBoardSensorCount];
+
+		for (int i = 0; i < m_BaseBoardSensorCount; i++)
+		{
+			m_CurrentTemperature[i] = static_cast<float>(m_WMI.GetWMIProperty(bstr_t("ROOT\\WMI"),
+				bstr_t("MSAcpi_ThermalZoneTemperature"), L"CurrentTemperature").GetAt(i).uintVal);
+			m_CurrentTemperature[i] = (m_CurrentTemperature[i] - 2732) / 10;
+		}
+	}
 }
 
 // ³ÉÔ±º¯Êý
 float* CBaseBoard::GetBaseBoardTemperture()
 {
-	for (int i = 0; i < m_BaseBoardSensorCount; i++)
-	{
-		m_CurrentTemperature[i] = static_cast<float>(m_WMI.GetWMIProperty(bstr_t("ROOT\\WMI"),
-		bstr_t("MSAcpi_ThermalZoneTemperature"), L"CurrentTemperature").GetAt(i).uintVal);
-		m_CurrentTemperature[i] = (m_CurrentTemperature[i] - 2732) / 10;
-	}
+	//for (int i = 0; i < m_BaseBoardSensorCount; i++)
+	//{
+	//	m_CurrentTemperature[i] = static_cast<float>(m_WMI.GetWMIProperty(bstr_t("ROOT\\WMI"),
+	//	bstr_t("MSAcpi_ThermalZoneTemperature"), L"CurrentTemperature").GetAt(i).uintVal);
+	//	m_CurrentTemperature[i] = (m_CurrentTemperature[i] - 2732) / 10;
+	//}
 
 	return m_CurrentTemperature;
 }
